@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Register.css";
-
+import axios from "axios";
 import { Form, Button } from "react-bootstrap";
 
 const Register = () => {
@@ -17,6 +17,21 @@ const Register = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (FormData.password === FormData.confirmPassword) {
+      try {
+        const response = axios.post(
+          "http://localhost:4000/api/auth/register",
+          {
+            fullName: FormData.fullName,
+            password: FormData.password,
+            email: FormData.email,
+          }
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
   return (
     <div>
