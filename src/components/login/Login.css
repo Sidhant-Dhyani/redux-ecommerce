@@ -1,0 +1,17 @@
+
+.register_link {
+  margin: 0 0.5%;
+  color: blue;
+  text-decoration: none;
+}
+
+.login_boot_button {
+  max-width: 90px;
+  margin-bottom: 1%;
+}
+
+.login_heading{
+  margin-top: 1%;
+  text-align: center;
+}
+
