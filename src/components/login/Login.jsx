@@ -10,6 +10,13 @@ const Login = () => {
   });
   const handleSubmit = (e) => {
     e.preventDefault();
+    try {
+      const response = axios.post("http://localhost:4000/api/auth/login", {email: FormData.email, password: FormData.password});
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
+
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
