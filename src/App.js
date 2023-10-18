@@ -4,8 +4,15 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
+import { useDispatch } from "react-redux";
+import { userLogin } from "./redux/actions/auth-actions";
 
 function App() {
+  const dispatch = useDispatch();
+  const storedToken = localStorage.getItem("token");
+  if (storedToken) {
+    dispatch(userLogin(storedToken));
+  }
   return (
     <div className="App">
       <Header />

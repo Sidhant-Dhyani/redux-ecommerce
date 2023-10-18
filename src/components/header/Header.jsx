@@ -1,10 +1,33 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
+import axios from "axios";
 import "./Header.css";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
+import jwt_decode from "jwt-decode";
 
-const Header = () => {
+const Header = ({ token }) => {
+  const [fullName, setFullName] = useState(null);
+
+  useEffect(() => {
+    if (token) {
+      try {
+        const decodedToken = jwt_decode(token);
+        const userID = decodedToken.id;
+        axios
+          .get(`http://localhost:4000/userInfo/${userID}`)
+          .then((response) => {
+            setFullName(response.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      } catch (error) {
+        console.error("Token parsing error:", error);
+      }
+    }
+  }, [token]);
   return (
     <div>
       <Navbar bg="dark" data-bs-theme="dark">
@@ -16,11 +39,25 @@ const Header = () => {
             <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
           <FontAwesomeIcon className="icon" icon={faCartShopping} />
-          <a className="Header_login_link" href="/login">Login</a>
+          <div>
+            {token ? (
+              <div>
+                <a className="token">{fullName}</a>
+              </div>
+            ) : (
+              <a className="Header_login_link" href="/login">
+                Login
+              </a>
+            )}
+          </div>
         </Container>
       </Navbar>
     </div>
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  token: state.token.token,
+});
+
+export default connect(mapStateToProps)(Header);

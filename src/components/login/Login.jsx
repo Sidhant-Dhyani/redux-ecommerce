@@ -2,22 +2,39 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import { userLogin, userLogout } from "../../redux/actions/auth-actions";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [FormData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = axios.post("http://localhost:4000/api/auth/login", {email: FormData.email, password: FormData.password});
-      console.log(response);
+      const response = await axios.post(
+        "http://localhost:4000/api/auth/login",
+        {
+          email: FormData.email,
+          password: FormData.password,
+        }
+      );
+      console.log("Full response", response.data);
+      const { token } = response.data;
+      localStorage.setItem("token", token);
+      dispatch(userLogin(token));
     } catch (error) {
       console.log(error.message);
     }
-
   };
+
+  const handleLogout = async (e) => {
+    localStorage.removeItem("token");
+    dispatch(userLogout());
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...FormData, [name]: value });
@@ -54,6 +71,13 @@ const Login = () => {
               type="submit"
             >
               Login
+            </Button>
+            <Button
+              className="mt-2 login_boot_button"
+              variant="primary"
+              onClick={handleLogout}
+            >
+              Logout
             </Button>
             <br />
             click to

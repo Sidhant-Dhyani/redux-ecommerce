@@ -1,10 +1,13 @@
-
-import {USER_LOGIN, USER_LOGOUT} from './auth-actions-types';
-
 export const userLogin = (token) => {
-    return {
-        type: USER_LOGIN,
-        payload: token,
-    };
-}
+  return {
+    type: "LOGIN",
+    payload: token,
+  };
+};
+
+export const userLogout = () => {
+  return {
+    type: "LOGOUT",
+  };
+};
 

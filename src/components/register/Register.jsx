@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import "./Register.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
+import { userLogin } from "../../redux/actions/auth-actions";
+import { useDispatch } from "react-redux";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [FormData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -15,19 +20,19 @@ const Register = () => {
     const { name, value } = event.target;
     setFormData({ ...FormData, [name]: value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if (FormData.password === FormData.confirmPassword) {
       try {
-        const response = axios.post(
-          "http://localhost:4000/api/auth/register",
-          {
-            fullName: FormData.fullName,
-            password: FormData.password,
-            email: FormData.email,
-          }
-        );
-        console.log(response.data);
+        const response = await axios.post("http://localhost:4000/api/auth/register", {
+          fullName: FormData.fullName,
+          password: FormData.password,
+          email: FormData.email,
+        });
+        const { token } = response.data;
+        localStorage.setItem("token", token);
+        dispatch(userLogin(token));
+        navigate("/login");
       } catch (error) {
         console.log(error);
       }
