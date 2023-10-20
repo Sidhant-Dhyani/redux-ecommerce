@@ -1,0 +1,38 @@
+
+.home {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 5vh;
+}
+
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.magnifyingIcon {
+  margin-left: 1%;
+}
+
+.inputBar {
+  border: solid 2px rgb(188, 188, 188);
+  border-radius: 100px;
+  width: 400px;
+  height: 40px;
+  padding-left: 2%;
+}
+
+.inputBar:focus {
+  outline: solid 1px rgb(188, 188, 188);
+}
+
+.productsHeading{
+    text-align: center;
+    margin-top: 4%;
+}
+
+.products{
+    margin-top: 2vh;
+}
+
