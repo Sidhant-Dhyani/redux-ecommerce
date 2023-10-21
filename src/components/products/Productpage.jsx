@@ -1,13 +1,13 @@
+
 import React from "react";
-import axios from "axios";
 import { useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { addToCart } from "../../redux/actions/cartActions";
 import "./Productpage.css";
 
-const Productpage = () => {
-  const location = useLocation();
+const Productpage = ({ addToCart }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const {
     id,
     title,
@@ -22,16 +22,7 @@ const Productpage = () => {
     images,
   } = location.state;
   const handleAddToCart = () => {
-    axios
-      .post("http://localhost:4000/api/cart/add", { productId: id })
-      .then((res) => {
-        console.log(res.data);
-        dispatch(addToCart(id));
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    console.log({ id });
+    addToCart({ id, price, title, thumbnail });
   };
   return (
     <div className="product-page">
@@ -70,4 +61,5 @@ const Productpage = () => {
   );
 };
 
-export default Productpage;
+export default connect(null, { addToCart })(Productpage);
+

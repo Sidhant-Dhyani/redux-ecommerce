@@ -1,26 +1,23 @@
 const initialState = {
-  cart: [],
-  loading: false,
-  error: null,
+  cartItems: localStorage.getItem("cartItems")
+    ? JSON.parse(localStorage.getItem("cartItems"))
+    : [],
+    qty: 0,
+    total: 0
 };
 
 const cartReducer = (state = initialState, action) => {
-  // switch (action.type) {
-  //   case "ADD_TO_CART":
-  //     return {
-  //       ...state,
-  //       cart: [...state.cart, action.payload],
-  //     };
-  //   default:
-  //     return state;
-  // }
   switch (action.type) {
-    case "FETCH_CART_ITEMS_REQUEST":
-      return { ...state, loading: true, error: null };
-    case "FETCH_CART_ITEMS_SUCCESS":
-      return { ...state, loading: false, cart: action.payload };
-    case "FETCH_CART_ITEMS_FAILURE":
-      return { ...state, loading: true, error: action.error };
+    case "ADD_TO_CART":
+      return { cartItems: action.payload.cartItems };
+    case "INCREASE_QUANTITY":
+      return { cartItems: action.payload.cartItems };
+
+    // case "DECREASE_QUANTITY":
+    //   return { cartItems: action.payload.cartItems };
+
+    case "REMOVE_FROM_CART":
+      return { cartItems: action.payload.cartItems };
     default:
       return state;
   }

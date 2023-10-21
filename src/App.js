@@ -7,7 +7,7 @@ import Login from "./components/login/Login";
 import Home from "./components/home/Home";
 import Register from "./components/register/Register";
 import Productpage from "./components/products/Productpage";
-import Cart from "./components/products/Cart";
+import Cart from "./components/cart/Cart";
 
 import { useDispatch } from "react-redux";
 import { userLogin } from "./redux/actions/auth-actions";

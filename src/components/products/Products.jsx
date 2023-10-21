@@ -19,7 +19,7 @@ const Products = ({ products, loading, error, fetchProducts }) => {
     <div>
       {products.map((product) => (
         <ProductCard
-          id = {product._id}
+          id={product._id}
           key={product._id}
           thumbnail={product.thumbnail}
           title={product.title}

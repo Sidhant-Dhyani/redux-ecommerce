@@ -1,20 +1,43 @@
-export const addToCart = (productId) => {
-  return {
+export const addToCart = (product) => (dispatch, getState) => {
+  const cartItems = getState().cart.cartItems.slice();
+  let alreadyExists = false;
+  cartItems.forEach((x) => {
+    if (x.id === product.id) {
+      alreadyExists = true;
+    }
+  });
+  if (!alreadyExists) {
+    cartItems.push({ ...product });
+  }
+  dispatch({
     type: "ADD_TO_CART",
-    payload: productId,
-  };
+    payload: { cartItems },
+  });
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
 };
 
-export const fetchCartItemsRequest = () => ({
-  type: "FETCH_CART_ITEMS_REQUEST",
-});
+export const removeFromCart = (product) => (dispatch, getState) => {
+  const cartItems = getState()
+    .cart.cartItems.slice()
+    .filter((x) => x.id !== product.id);
+  dispatch({
+    type: "REMOVE_FROM_CART",
+    payload: { cartItems },
+  });
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+};
 
-export const fetchCartItemsSuccess = (items) => ({
-  type: "FETCH_CART_ITEMS_SUCCESS",
-  payload: items,
-});
+export const incrementToCart = (product) => (dispatch, getState) => {
+  const cartItems = getState().cart.cartItems.slice();
+  const selectProduct = cartItems.find((item) => item.id === product.id);
+  const index = cartItems.indexOf(selectProduct);
+  const value = cartItems[index];
+  value.qty = value.qty + 1;
+  value.total = value.qty * value.price;
 
-export const fetchCartItemsFailure = (error) => ({
-  type: "FETCH_CART_ITEMS_Failure",
-  error,
-});
+  dispatch({
+    type: "INCREASE_QUANTITY",
+    payload: { cartItems },
+  });
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+};
