@@ -3,16 +3,35 @@ import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({
+  id,
   title,
   description,
   price,
+  discountPercentage,
   rating,
+  stock,
+  brand,
   category,
   thumbnail,
+  images,
 }) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/login");
+    navigate("/productpage", {
+      state: {
+        id,
+        title,
+        description,
+        price,
+        discountPercentage,
+        rating,
+        stock,
+        brand,
+        category,
+        thumbnail,
+        images,
+      },
+    });
   };
   return (
     <div className="product-card" onClick={handleClick}>

@@ -8,7 +8,7 @@ import {
 export const fetchProducts = () => (dispatch) => {
   dispatch(fetchProductsRequest());
   axios
-    .get("http://localhost:4000/api/products/getProducts")
+    .get("http://localhost:4000/api/products/getFilteredProducts")
     .then((response) => {
       dispatch(fetchProductsSuccess(response.data));
     })
