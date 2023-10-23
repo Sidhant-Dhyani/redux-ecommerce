@@ -1,26 +1,32 @@
+
 const initialState = {
   cartItems: localStorage.getItem("cartItems")
     ? JSON.parse(localStorage.getItem("cartItems"))
     : [],
-    qty: 0,
-    total: 0
+  total: 0,
 };
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-      return { cartItems: action.payload.cartItems };
     case "INCREASE_QUANTITY":
-      return { cartItems: action.payload.cartItems };
-
-    // case "DECREASE_QUANTITY":
-    //   return { cartItems: action.payload.cartItems };
-
+    case "DECREASE_QUANTITY":
     case "REMOVE_FROM_CART":
-      return { cartItems: action.payload.cartItems };
+      return {
+        ...state,
+        cartItems: action.payload.cartItems,
+        total: calculateTotal(action.payload.cartItems),
+      };
     default:
       return state;
   }
 };
 
+const calculateTotal = (cartItems) => {
+  return cartItems.reduce((total, item) => {
+    return total + item.qty * item.price;
+  }, 0);
+};
+
 export default cartReducer;
+
