@@ -1,49 +1,68 @@
-import React from "react";
-import { connect } from "react-redux";
-import { fetchProducts } from "../../redux/actions/productsThunk";
-import { useEffect } from "react";
+import React, { useState } from "react";
 import ProductCard from "./ProductCard";
+import Filter from "../products/Filter";
+import axios from "axios";
 
-const Products = ({ products, loading, error, fetchProducts }) => {
-  useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]);
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+const Products = () => {
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [isLoading, setIsloading] = useState(true);
+  const [filters, setFilters] = useState({
+    minPrice: "",
+    maxPrice: "",
+    brand: "",
+    category: "",
+    sort: "",
+  });
+  const handleFilterChange = (updatedFilters) => {
+    setFilters(updatedFilters);
+  };
 
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
+  const queryParams = `?minPrice=${filters.minPrice}&maxPrice=${filters.maxPrice}&category=${filters.category}&brand=${filters.brand}&sort=${filters.sort}`;
+
+  const url = `http://localhost:4000/api/products/getFilteredProducts/${queryParams}`;
+
+  axios
+    .get(url)
+    .then((res) => {
+      const filteredProducts = res.data;
+      setFilteredProducts(filteredProducts);
+      setIsloading(false);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
   return (
     <div>
-      {products.map((product) => (
-        <ProductCard
-          id={product._id}
-          key={product._id}
-          thumbnail={product.thumbnail}
-          title={product.title}
-          price={product.price}
-          rating={product.rating}
-          category={product.category}
-          description={product.description}
-          discountPercentage={product.discountPercentage}
-          stock={product.stock}
-          brand={product.brand}
-          images={product.images}
-        />
-      ))}
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div>
+          <div>
+            <Filter filters={filters} onFilterChange={handleFilterChange} />
+          </div>
+          <div>
+            {filteredProducts.map((product) => (
+              <ProductCard
+                id={product._id}
+                key={product._id}
+                thumbnail={product.thumbnail}
+                title={product.title}
+                price={product.price}
+                rating={product.rating}
+                category={product.category}
+                description={product.description}
+                discountPercentage={product.discountPercentage}
+                stock={product.stock}
+                brand={product.brand}
+                images={product.images}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  products: state.product.products,
-  loading: state.product.loading,
-  error: state.product.error,
-});
-const mapDispatchToProps = {
-  fetchProducts,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default Products;

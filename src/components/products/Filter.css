@@ -1,0 +1,19 @@
+
+.filter-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  background-color: #f9f9f9;
+}
+
+.filter-label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.filter-input,
+.filter-select {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
