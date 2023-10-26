@@ -1,3 +1,4 @@
+
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "./Header.css";
@@ -6,10 +7,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ token }) => {
+  const navigate = useNavigate();
   const [fullName, setFullName] = useState(null);
-
+  const handleCartClick = () => {
+    navigate('/cart');
+  };
   useEffect(() => {
     if (token) {
       try {
@@ -38,7 +43,11 @@ const Header = ({ token }) => {
             <Nav.Link href="#features">Features</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
-          <FontAwesomeIcon className="icon" icon={faCartShopping} />
+          <FontAwesomeIcon
+            onClick={handleCartClick}
+            className="icon"
+            icon={faCartShopping}
+          />
           <div>
             {token ? (
               <div>
@@ -61,3 +70,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Header);
+

@@ -1,0 +1,21 @@
+
+.checkout-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    margin-left: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .checkout-button:hover {
+    background-color: #0056b3;
+  }
+
+  .total{
+    margin-left: 20px;
+  }
+  

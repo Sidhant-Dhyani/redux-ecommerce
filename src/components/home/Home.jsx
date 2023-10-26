@@ -13,7 +13,7 @@ const Home = () => {
         <FontAwesomeIcon className="magnifyingIcon" icon={faMagnifyingGlass} />
       </div>
       <h1 className="productsHeading">Our Products</h1>
-      {/* <Filter /> */}
+      <Filter />
       <Products />
     </div>
   );

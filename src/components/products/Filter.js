@@ -3,7 +3,7 @@ import React from "react";
 const Filter = () => {
   return (
     <div>
-      {/* <label htmlFor="minPrice" className="">
+      <label htmlFor="minPrice" className="">
         Min Price (in $):
       </label>
       <input
@@ -33,7 +33,7 @@ const Filter = () => {
         type="select"
         onChange={(e) => handleInputChange("brand", e.target.value)}
       ></select>
-      <input type="" /> */}
+      <input type="" />
     </div>
   );
 };

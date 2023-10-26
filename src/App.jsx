@@ -11,6 +11,8 @@ import Cart from "./components/cart/Cart";
 
 import { useDispatch } from "react-redux";
 import { userLogin } from "./redux/actions/auth-actions";
+import Checkout from "./components/checkout/Checkout";
+import ShippingForm from "./components/checkout/ShippingForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +29,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/productpage" element={<Productpage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/shippingpage" element={<ShippingForm />} />
+        <Route path="/checkoutpage" element={<Checkout />} />
       </Routes>
     </div>
   );
