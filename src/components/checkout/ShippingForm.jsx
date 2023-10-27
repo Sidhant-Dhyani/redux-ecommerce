@@ -51,7 +51,7 @@ const ShippingForm = () => {
         );
         if (response.status === 200) {
           console.log("Order Created Successfully!!");
-          Navigate("/");
+          Navigate("/checkoutpage");
         } else {
           console.log();
         }

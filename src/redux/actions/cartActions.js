@@ -63,3 +63,4 @@ export const decrementToCart = (product) => (dispatch, getState) => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }
 };
+

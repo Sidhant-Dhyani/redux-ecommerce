@@ -6,7 +6,7 @@ const Checkout = () => {
   return (
     <div>
         <h1>Order Success</h1>
-        <h4>Total: {cartTotal}</h4>
+        <h4>Total: ${cartTotal}</h4>
     </div>
   );
 };

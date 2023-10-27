@@ -1,10 +1,12 @@
+
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/actions/cartActions";
 import "./Productpage.css";
 
-const Productpage = ({ addToCart }) => {
+const Productpage = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const {
@@ -21,7 +23,7 @@ const Productpage = ({ addToCart }) => {
     images,
   } = location.state;
   const handleAddToCart = () => {
-    addToCart({ id, price, title, thumbnail });
+    dispatch(addToCart({ id, price, title, thumbnail }));
     navigate("/cart");
   };
   return (
@@ -61,4 +63,5 @@ const Productpage = ({ addToCart }) => {
   );
 };
 
-export default connect(null, { addToCart })(Productpage);
+export default Productpage;
+

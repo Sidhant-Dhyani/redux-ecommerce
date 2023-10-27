@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useSelector } from "react-redux";
 import "./Cart.css";
@@ -25,7 +26,7 @@ const Cart = () => {
           qty={item.qty}
         />
       ))}
-      <h4 className="total">Cart Total: {cartTotal}</h4>
+      <h4 className="total">Cart Total: ${cartTotal}</h4>
       <button className="checkout-button" onClick={handleCheckout}>
         Checkout
       </button>
@@ -34,3 +35,4 @@ const Cart = () => {
 };
 
 export default Cart;
+

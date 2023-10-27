@@ -3,7 +3,7 @@ const initialState = {
   cartItems: localStorage.getItem("cartItems")
     ? JSON.parse(localStorage.getItem("cartItems"))
     : [],
-  total: 0,
+  total: localStorage.getItem("total"),
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -24,6 +24,10 @@ const cartReducer = (state = initialState, action) => {
 
 const calculateTotal = (cartItems) => {
   return cartItems.reduce((total, item) => {
+    localStorage.setItem(
+      "total",
+      JSON.stringify(total + item.qty * item.price)
+    );
     return total + item.qty * item.price;
   }, 0);
 };
