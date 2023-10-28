@@ -36,7 +36,7 @@ const ShippingForm = () => {
     } else {
       try {
         const response = await axios.post(
-          "https://redux-ecommerce-backend-nu.vercel.app/api/checkout/order",
+          "https://redux-ecommerce-backend-wheat.vercel.app/api/checkout/order",
           {
             name: shippingInfo.name,
             address: shippingInfo.address,

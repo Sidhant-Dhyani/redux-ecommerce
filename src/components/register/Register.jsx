@@ -25,7 +25,7 @@ const Register = () => {
     if (FormData.password === FormData.confirmPassword) {
       try {
         const response = await axios.post(
-          "https://redux-ecommerce-backend-nu.vercel.app/api/auth/register",
+          "https://redux-ecommerce-backend-wheat.vercel.app/api/auth/register",
           {
             fullName: FormData.fullName,
             password: FormData.password,

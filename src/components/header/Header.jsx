@@ -21,7 +21,7 @@ const Header = ({ token }) => {
         const userID = decodedToken.id;
         axios
           .get(
-            `https://redux-ecommerce-backend-nu.vercel.app/userInfo/${userID}`
+            `https://redux-ecommerce-backend-wheat.vercel.app/userInfo/${userID}`
           )
           .then((response) => {
             setFullName(response.data);

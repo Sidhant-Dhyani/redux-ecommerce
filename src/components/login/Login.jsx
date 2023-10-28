@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://redux-ecommerce-backend-nu.vercel.app/api/auth/login",
+        "https://redux-ecommerce-backend-wheat.vercel.app/api/auth/login",
         {
           email: FormData.email,
           password: FormData.password,
