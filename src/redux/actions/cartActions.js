@@ -1,3 +1,4 @@
+
 export const addToCart = (product) => (dispatch, getState) => {
   const cartItems = getState().cart.cartItems.slice();
   const indexOfItem = cartItems.findIndex((item) => item.id === product.id);

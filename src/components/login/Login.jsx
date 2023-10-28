@@ -21,7 +21,6 @@ const Login = () => {
           password: FormData.password,
         }
       );
-      console.log("Full response", response.data);
       const { token } = response.data;
       localStorage.setItem("token", token);
       dispatch(userLogin(token));
