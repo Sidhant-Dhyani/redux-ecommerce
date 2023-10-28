@@ -1,6 +1,6 @@
 import React from "react";
 import "./CartItem.css";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   removeFromCart,
   incrementToCart,
@@ -41,8 +41,4 @@ const CartItem = ({ id, title, thumbnail, price, qty }) => {
   );
 };
 
-export default connect(null, {
-  removeFromCart,
-  incrementToCart,
-  decrementToCart,
-})(CartItem);
+export default CartItem;

@@ -20,15 +20,18 @@ const Register = () => {
     const { name, value } = event.target;
     setFormData({ ...FormData, [name]: value });
   };
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (FormData.password === FormData.confirmPassword) {
       try {
-        const response = await axios.post("http://localhost:4000/api/auth/register", {
-          fullName: FormData.fullName,
-          password: FormData.password,
-          email: FormData.email,
-        });
+        const response = await axios.post(
+          "https://redux-ecommerce-backend-nu.vercel.app/api/auth/register",
+          {
+            fullName: FormData.fullName,
+            password: FormData.password,
+            email: FormData.email,
+          }
+        );
         const { token } = response.data;
         localStorage.setItem("token", token);
         dispatch(userLogin(token));

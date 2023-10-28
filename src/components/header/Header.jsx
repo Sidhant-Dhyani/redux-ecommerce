@@ -1,4 +1,3 @@
-
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "./Header.css";
@@ -13,7 +12,7 @@ const Header = ({ token }) => {
   const navigate = useNavigate();
   const [fullName, setFullName] = useState(null);
   const handleCartClick = () => {
-    navigate('/cart');
+    navigate("/cart");
   };
   useEffect(() => {
     if (token) {
@@ -21,7 +20,9 @@ const Header = ({ token }) => {
         const decodedToken = jwt_decode(token);
         const userID = decodedToken.id;
         axios
-          .get(`http://localhost:4000/userInfo/${userID}`)
+          .get(
+            `https://redux-ecommerce-backend-nu.vercel.app/userInfo/${userID}`
+          )
           .then((response) => {
             setFullName(response.data);
           })
@@ -70,4 +71,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Header);
-
