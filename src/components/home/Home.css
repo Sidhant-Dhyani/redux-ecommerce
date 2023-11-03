@@ -5,7 +5,7 @@
   padding-top: 5vh;
 }
 
-.input {
+.input_home {
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -15,10 +15,10 @@
   margin-left: 1%;
 }
 
-.inputBar {
+.inputBar_home {
   border: solid 2px rgb(188, 188, 188);
   border-radius: 100px;
-  width: 400px;
+  width: 400px !important;
   height: 40px;
   padding-left: 2%;
 }

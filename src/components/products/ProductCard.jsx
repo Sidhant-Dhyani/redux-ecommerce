@@ -37,11 +37,11 @@ const ProductCard = ({
     <div className="product-card" onClick={handleClick}>
       <img src={thumbnail} alt={title} />
       <div className="product-details">
-        <h2>{title}</h2>
+        <h5>{title}</h5>
         <p>{description}</p>
         <p className="category">Category: {category}</p>
         <div className="price-rating">
-          <p className="price">Price: ${price}</p>
+          <p className="product_price">Price: ${price}</p>
           <p className="rating">Rating: {rating} stars</p>
         </div>
       </div>

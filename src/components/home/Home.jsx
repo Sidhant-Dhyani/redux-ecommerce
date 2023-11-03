@@ -7,8 +7,8 @@ import Products from "../products/Products";
 const Home = () => {
   return (
     <div className="home">
-      <div className="input">
-        <input className="inputBar" type="text" placeholder="search" />
+      <div className="input_home">
+        <input className="inputBar_home" type="text" placeholder="search" />
         <FontAwesomeIcon className="magnifyingIcon" icon={faMagnifyingGlass} />
       </div>
       <h1 className="productsHeading">Our Products</h1>

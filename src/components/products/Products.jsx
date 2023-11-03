@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Products.css";
 import ProductCard from "./ProductCard";
 import Filter from "../products/Filter";
 import axios from "axios";
@@ -41,23 +42,25 @@ const Products = () => {
           <div>
             <Filter filters={filters} onFilterChange={handleFilterChange} />
           </div>
-          <div>
-            {filteredProducts.map((product) => (
-              <ProductCard
-                id={product._id}
-                key={product._id}
-                thumbnail={product.thumbnail}
-                title={product.title}
-                price={product.price}
-                rating={product.rating}
-                category={product.category}
-                description={product.description}
-                discountPercentage={product.discountPercentage}
-                stock={product.stock}
-                brand={product.brand}
-                images={product.images}
-              />
-            ))}
+          <div className="products_list">
+            <div className="grid_list">
+              {filteredProducts.map((product) => (
+                <ProductCard
+                  id={product._id}
+                  key={product._id}
+                  thumbnail={product.thumbnail}
+                  title={product.title}
+                  price={product.price}
+                  rating={product.rating}
+                  category={product.category}
+                  description={product.description}
+                  discountPercentage={product.discountPercentage}
+                  stock={product.stock}
+                  brand={product.brand}
+                  images={product.images}
+                />
+              ))}
+            </div>
           </div>
         </div>
       )}

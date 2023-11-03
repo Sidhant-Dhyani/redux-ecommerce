@@ -1,4 +1,4 @@
-
+/* 
 .product-card {
   display: flex;
   border: 1px solid #e0e0e0;
@@ -51,5 +51,30 @@
 
 .price-rating .rating {
   color: #4caf50;
+}
+ */
+
+.product-card {
+  height: 515px;
+  width: 300px;
+  /* border: solid 2px red; */
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.product-card img {
+  height: 50%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product_price {
+  color: green;
+}
+
+.rating {
+  color: orange;
 }
 
