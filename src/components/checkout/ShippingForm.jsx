@@ -8,8 +8,8 @@ const ShippingForm = () => {
   const cartTotal = useSelector((state) => state.cart.total);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const token = useSelector((state) => state.token);
-  const decodedToken = jwt_decode(token.token);
-  const userID = decodedToken.id;
+  const decodedToken = token && token.token ? jwt_decode(token.token) : null;
+  const userID = decodedToken ? decodedToken.id : null;
   const Navigate = useNavigate();
   const [shippingInfo, setShippingInfo] = useState({
     name: "",
@@ -30,6 +30,7 @@ const ShippingForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Hello World');
     if (token.token === null) {
       alert("Please log in to proceed with checkout.");
       Navigate("/login");
