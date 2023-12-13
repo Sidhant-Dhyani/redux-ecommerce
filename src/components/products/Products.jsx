@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Products.css";
 import ProductCard from "./ProductCard";
 import Filter from "../products/Filter";
 import axios from "axios";
 
 const Products = () => {
+  const [visibleEntries, setVisibleEntries] = useState(5);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [isLoading, setIsloading] = useState(true);
   const [filters, setFilters] = useState({
@@ -33,6 +34,24 @@ const Products = () => {
       console.log(error);
     });
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop >=
+        document.documentElement.offsetHeight - 10
+      ) {
+        // User has scrolled to the bottom (with a small buffer), fetch more data
+        setVisibleEntries(prevVisibleEntries => prevVisibleEntries + 1);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div>
       {isLoading ? (
@@ -44,7 +63,7 @@ const Products = () => {
           </div>
           <div className="products_list">
             <div className="grid_list">
-              {filteredProducts.map((product) => (
+              {filteredProducts.slice(0, visibleEntries).map((product) => (
                 <ProductCard
                   id={product._id}
                   key={product._id}
