@@ -21,7 +21,7 @@ const Products = () => {
 
   const queryParams = `?minPrice=${filters.minPrice}&maxPrice=${filters.maxPrice}&category=${filters.category}&brand=${filters.brand}&sort=${filters.sort}`;
 
-  const url = `https://redux-ecommerce-backend-wheat.vercel.app/api/products/getFilteredProducts/${queryParams}`;
+  const url = `http://localhost:4000/api/products/getFilteredProducts/${queryParams}`;
 
   axios
     .get(url)
@@ -40,7 +40,6 @@ const Products = () => {
         window.innerHeight + document.documentElement.scrollTop >=
         document.documentElement.offsetHeight - 10
       ) {
-        // User has scrolled to the bottom (with a small buffer), fetch more data
         setVisibleEntries(prevVisibleEntries => prevVisibleEntries + 1);
       }
     };

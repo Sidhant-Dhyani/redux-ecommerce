@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://redux-ecommerce-backend-wheat.vercel.app/api/auth/login",
+        "http://localhost:4000/api/auth/login",
         {
           email: FormData.email,
           password: FormData.password,
@@ -29,7 +29,7 @@ const Login = () => {
     }
   };
 
-  const handleLogout = async (e) => {
+  const handleLogout = async () => {
     localStorage.removeItem("token");
     dispatch(userLogout());
   };

@@ -7,6 +7,7 @@ import axios from "axios";
 const ShippingForm = () => {
   const cartTotal = useSelector((state) => state.cart.total);
   const cartItems = useSelector((state) => state.cart.cartItems);
+
   const token = useSelector((state) => state.token);
   const decodedToken = token && token.token ? jwt_decode(token.token) : null;
   const userID = decodedToken ? decodedToken.id : null;
@@ -36,7 +37,7 @@ const ShippingForm = () => {
     } else {
       try {
         const response = await axios.post(
-          "https://redux-ecommerce-backend-wheat.vercel.app/api/checkout/order",
+          "http://localhost:4000/api/checkout/order",
           {
             name: shippingInfo.name,
             address: shippingInfo.address,
@@ -51,9 +52,10 @@ const ShippingForm = () => {
         );
         if (response.status === 200) {
           console.log("Order Created Successfully!!");
+          console.log(response.data);
           Navigate("/checkoutpage");
         } else {
-          console.log();
+          console.log('some error!!');
         }
       } catch (error) {
         console.error(error.message);
