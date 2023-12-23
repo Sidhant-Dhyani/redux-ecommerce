@@ -21,7 +21,7 @@ const Header = ({ token }) => {
         const userID = decodedToken.id;
         axios
           .get(
-            `http://localhost:4000/userInfo/${userID}`
+            `https://e-commerce-backend-with-admin.vercel.app/userInfo/${userID}`
           )
           .then((response) => {
             setFullName(response.data);
