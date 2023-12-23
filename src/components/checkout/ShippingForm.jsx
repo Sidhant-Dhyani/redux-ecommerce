@@ -37,7 +37,7 @@ const ShippingForm = () => {
     } else {
       try {
         const response = await axios.post(
-          "http://localhost:4000/api/checkout/order",
+          "https://e-commerce-backend-with-admin.vercel.app/api/checkout/order",
           {
             name: shippingInfo.name,
             address: shippingInfo.address,
