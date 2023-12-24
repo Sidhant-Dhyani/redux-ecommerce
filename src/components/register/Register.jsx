@@ -25,7 +25,7 @@ const Register = () => {
     if (FormData.password === FormData.confirmPassword) {
       try {
         const response = await axios.post(
-          "https://e-commerce-backend-with-admin.vercel.app/api/auth/register",
+          "https://e-commerce-backend-omega-seven.vercel.app/api/auth/register",
           {
             fullName: FormData.fullName,
             password: FormData.password,

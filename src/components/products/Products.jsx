@@ -21,7 +21,7 @@ const Products = () => {
 
   const queryParams = `?minPrice=${filters.minPrice}&maxPrice=${filters.maxPrice}&category=${filters.category}&brand=${filters.brand}&sort=${filters.sort}`;
 
-  const url = `https://e-commerce-backend-with-admin.vercel.app/api/products/getFilteredProducts/${queryParams}`;
+  const url = `https://e-commerce-backend-omega-seven.vercel.app/api/products/getFilteredProducts/${queryParams}`;
 
   axios
     .get(url)

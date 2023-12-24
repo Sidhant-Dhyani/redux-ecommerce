@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://e-commerce-backend-with-admin.vercel.app/api/auth/login",
+        "https://e-commerce-backend-omega-seven.vercel.app/api/auth/login",
         {
           email: FormData.email,
           password: FormData.password,
