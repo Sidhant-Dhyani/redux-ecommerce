@@ -8,6 +8,7 @@ import {
 } from "../../redux/actions/cartActions";
 
 const CartItem = ({ id, title, thumbnail, price, qty }) => {
+  // console.log(id);
   const dispatch = useDispatch();
   const handleRemoveFromCart = () => {
     dispatch(removeFromCart({ id }));

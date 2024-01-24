@@ -8,7 +8,13 @@ import axios from "axios";
 const ShippingForm = () => {
   const cartTotal = useSelector((state) => state.cart.total);
   const cartItems = useSelector((state) => state.cart.cartItems);
-
+  const products = [];
+  cartItems.map((item) => {
+    products.push({
+      product: item.id,
+      qty: item.qty
+    });
+  });
   const token = useSelector((state) => state.token);
   const decodedToken = token && token.token ? jwt_decode(token.token) : null;
   const userID = decodedToken ? decodedToken.id : null;
@@ -48,7 +54,7 @@ const ShippingForm = () => {
             contact_phone: shippingInfo.contactNumber,
             user: userID,
             totalPrice: cartTotal,
-            products: cartItems,
+            products: products,
           }
         );
         if (response.status === 200) {

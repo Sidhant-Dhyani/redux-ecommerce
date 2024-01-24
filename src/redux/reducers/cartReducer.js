@@ -33,4 +33,3 @@ const calculateTotal = (cartItems) => {
 };
 
 export default cartReducer;
-
