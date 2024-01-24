@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Register.css";
+import BASE_URL from '../../config';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
@@ -25,7 +26,7 @@ const Register = () => {
     if (FormData.password === FormData.confirmPassword) {
       try {
         const response = await axios.post(
-          "https://e-commerce-backend-omega-seven.vercel.app/api/auth/register",
+          `${BASE_URL}/api/auth/register`,
           {
             fullName: FormData.fullName,
             password: FormData.password,

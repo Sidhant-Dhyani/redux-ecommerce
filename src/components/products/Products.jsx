@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Products.css";
+import BASE_URL from '../../config';
 import ProductCard from "./ProductCard";
 import Filter from "../products/Filter";
 import axios from "axios";
@@ -21,7 +22,7 @@ const Products = () => {
 
   const queryParams = `?minPrice=${filters.minPrice}&maxPrice=${filters.maxPrice}&category=${filters.category}&brand=${filters.brand}&sort=${filters.sort}`;
 
-  const url = `https://e-commerce-backend-omega-seven.vercel.app/api/products/getFilteredProducts/${queryParams}`;
+  const url = `${BASE_URL}/api/products/getFilteredProducts/${queryParams}`;
 
   axios
     .get(url)

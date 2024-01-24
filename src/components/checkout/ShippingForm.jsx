@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./ShippingForm.css";
+import BASE_URL from '../../config';
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import jwt_decode from "jwt-decode";
@@ -37,7 +38,7 @@ const ShippingForm = () => {
     } else {
       try {
         const response = await axios.post(
-          "https://e-commerce-backend-omega-seven.vercel.app/api/checkout/order",
+          `${BASE_URL}/api/checkout/order`,
           {
             name: shippingInfo.name,
             address: shippingInfo.address,

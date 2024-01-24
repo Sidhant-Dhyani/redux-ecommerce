@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
+import BASE_URL from '../../config';
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { userLogin, userLogout } from "../../redux/actions/auth-actions";
@@ -15,7 +16,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://e-commerce-backend-omega-seven.vercel.app/api/auth/login",
+        `${BASE_URL}/api/auth/login`,
         {
           email: FormData.email,
           password: FormData.password,

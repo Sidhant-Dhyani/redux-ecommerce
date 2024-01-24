@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "./Header.css";
+import BASE_URL from '../../config';
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
@@ -21,7 +22,7 @@ const Header = ({ token }) => {
         const userID = decodedToken.id;
         axios
           .get(
-            `https://e-commerce-backend-omega-seven.vercel.app/userInfo/${userID}`
+            `${BASE_URL}/userInfo/${userID}`
           )
           .then((response) => {
             setFullName(response.data);
