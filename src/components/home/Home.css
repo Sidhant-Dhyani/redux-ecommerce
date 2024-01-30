@@ -5,28 +5,6 @@
   padding-top: 5vh;
 }
 
-.input_home {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-}
-
-.magnifyingIcon {
-  margin-left: 1%;
-}
-
-.inputBar_home {
-  border: solid 2px rgb(188, 188, 188);
-  border-radius: 100px;
-  width: 400px !important;
-  height: 40px;
-  padding-left: 2%;
-}
-
-.inputBar:focus {
-  outline: solid 1px rgb(188, 188, 188);
-}
-
 .productsHeading{
     text-align: center;
     margin-top: 4%;
