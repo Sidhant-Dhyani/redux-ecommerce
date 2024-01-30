@@ -34,10 +34,7 @@ const Products = () => {
     axios.get(`${BASE_URL}/api/products/searchProducts?keywords=${search}`)
       .then((res) => {
         const searchResults = res.data;
-        console.log(searchResults);
-        console.log(true);
         setFilteredProducts(searchResults);
-        console.log(false);
         setIsloading(false);
       })
       .catch((err) => {
