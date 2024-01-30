@@ -8,7 +8,7 @@ import Filter from "../products/Filter";
 import axios from "axios";
 
 const Products = () => {
-  const [visibleEntries, setVisibleEntries] = useState(5);
+  // const [visibleEntries, setVisibleEntries] = useState(5);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [search, setSearch] = useState('');
   const [isLoading, setIsloading] = useState(true);
